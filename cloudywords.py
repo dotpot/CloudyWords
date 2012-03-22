@@ -7,7 +7,6 @@ class CloudyWords(object):
         """
         self.wordsHash = dict()
         self.minWordLength = minWordLen
-        self.totalWordsCount = 0
         self.illegalSymbols = { '.', ',', ';', '?', '<', '>', '[', ']', '(', ')', '{', '}', '`', '~', '!' }
 
     def addWords(self, wordOrSentence):
@@ -21,8 +20,6 @@ class CloudyWords(object):
             line = line.strip().lower()
 
             if len(line) > self.minWordLength:
-                self.totalWordsCount += 1
-
                 if self.wordsHash.has_key(line):
                     self.wordsHash[line] += 1
                 else:
@@ -30,15 +27,17 @@ class CloudyWords(object):
 
     def cloud(self):
         """
-        Method will return a list of words sorted by popularity ( more popular first )
+        Method will return a list of words sorted by popularity ( more popular goes first )
         """
         if len(self.wordsHash) > 0:
             result = list()
             for key, value in sorted(self.wordsHash.iteritems(), key = lambda (k, v) : (v, k), reverse = True):
                 result.append(key)
-
             return result
         return None
+
+    def total_words_count(self):
+        return len(self.wordsHash)
 
     def reset(self):
         self.totalWordsCount = 0
