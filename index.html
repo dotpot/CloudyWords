@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>CloudyWords by dotpot</title>
+    
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>CloudyWords</h1>
+        <p>word's/tag's cloud in Python for Humans.</p>
+        <p class="view"><a href="https://github.com/dotpot/CloudyWords">View the Project on GitHub <small>dotpot/CloudyWords</small></a></p>
+        <ul>
+          <li><a href="https://github.com/dotpot/CloudyWords/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/dotpot/CloudyWords/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/dotpot/CloudyWords">Fork On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>CloudyWords</h1>
+
+<p>word's/tag's cloud in Python for Humans.</p>
+
+<h1>Introduction</h1>
+
+<p>even wondered what words are most popular in particular string/document, entries ?
+Now it's easy to know with <strong>CloudyWords</strong>.</p>
+
+<p>#Usage
+    from cloudywords import CloudyWords
+    cw = CloudyWords()</p>
+
+<pre><code># add phrase.
+cw.addWords("""
+his is a fantastic phrase, it has been popular and it has worked; testing now starts earlier and testing has a higher profile than ever before, but despite all that, it isn't what we meant or even what we really needed.
+Back in the depths of despair that was the Software Crisis. Testers managed to bellow a rallying cry "Testing should start early!" Testers could be found picketing management and development meetings with 'V-model' placards and T-shirts with 'cost of defect' bar charts emblazoned.
+""")
+
+# add one word.
+cw.addWords('testing')
+
+res = cw.cloud()
+
+# slice out out first 5 elements
+res = res[:5]
+
+for r in res:
+    # print word and it's weight.
+    print r + ' '+ str(cw.wordsHash[r])
+
+# print whole list
+print res
+</code></pre>
+
+<p><strong>Result:</strong></p>
+
+<pre><code>testing 3
+testers 2
+worked 1
+t-shirts 1
+starts 1
+['testing', 'testers', 'worked', 't-shirts', 'starts']
+</code></pre>
+
+<h3>Please feel free to improve it if you like :)</h3>
+
+<p><img src="http://img193.imageshack.us/img193/5605/tumblrlznr805hcb1r3zat8.png" alt="image"></p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/dotpot">dotpot</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><!--<![endif]-->
+  </body>
+</html>
