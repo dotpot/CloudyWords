@@ -23,21 +23,24 @@ Now it's easy to know with **CloudyWords**.
     # slice out out first 5 elements
     res = res[:5]
 
-    for r in res:
-        # print word and it's weight.
-        print r + ' '+ str(cw.wordsHash[r])
-
-    # print whole list
+    # print whole result
     print res
+    print '------------------------------------------------------'
+
+    # if you wanna know weight:
+    for word in res:
+        # print word and it's weight.
+        print word + ' '+ str(cw.weight[word])
 
 **Result:**
 
+    ['testing', 'testers', 'worked', 't-shirts', 'starts']
+    ------------------------------------------------------
     testing 3
     testers 2
-	worked 1
-	t-shirts 1
-	starts 1
-	['testing', 'testers', 'worked', 't-shirts', 'starts']
+    worked 1
+    t-shirts 1
+    starts 1
 
 ### Please feel free to improve it if you like :)
 

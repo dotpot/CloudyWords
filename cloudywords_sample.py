@@ -19,12 +19,14 @@ def main():
     # slice out out first 5 elements
     res = res[:5]
 
-    for r in res:
-        # print word and it's weight.
-        print r + ' '+ str(cw.wordsHash[r])
-
-    # print whole list
+    # print whole result
     print res
+    print '------------------------------------------------------'
+
+    # if you wanna know weight:
+    for word in res:
+        # print word and it's weight.
+        print word + ' '+ str(cw.weight[word])
 
 if __name__ == "__main__":
     main()
