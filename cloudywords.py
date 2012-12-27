@@ -1,26 +1,26 @@
 __author__ = 'lus'
 
 class CloudyWords(object):
-    def __init__(self, minWordLen = 4):
+    def __init__(self, min_word_len=4):
         """
-        Default initializer
+        Default initializer, min_word_len is default minimal length of the word which will be added to the tree.
         """
         self.weight = dict()
-        self.minWordLength = minWordLen
-        self.illegalSymbols = { '.', ',', ';', '?', '<', '>', '[', ']', '(', ')', '{', '}', '`', '~', '!' }
+        self.minWordLength = min_word_len
+        self.illegalSymbols = {'.', ',', ';', '?', '<', '>', '[', ']', '(', ')', '{', '}', '`', '~', '!'}
 
-    def addWords(self, wordOrSentence):
+    def add_words(self, word_or_sentence):
         """
         Method will populate engine with words.
         """
-        wLines = wordOrSentence.split(' ')
+        wLines = word_or_sentence.split(' ')
         for line in wLines:
             for isy in self.illegalSymbols:
                 line = line.replace(isy, '')
             line = line.strip().lower()
 
             if len(line) > self.minWordLength:
-                if self.weight.has_key(line):
+                if line in self.weight:
                     self.weight[line] += 1
                 else:
                     self.weight[line] = 1
@@ -31,7 +31,7 @@ class CloudyWords(object):
         """
         if len(self.weight) > 0:
             result = list()
-            for key, value in sorted(self.weight.iteritems(), key = lambda (k, v) : (v, k), reverse = True):
+            for key, value in sorted(self.weight.iteritems(), key=lambda (k, v): (v, k), reverse = True):
                 result.append(key)
             return result
         return None
