@@ -31,7 +31,7 @@ class CloudyWords(object):
         """
         if len(self.weight) > 0:
             result = list()
-            for key, value in sorted(self.weight.iteritems(), key=lambda (k, v): (v, k), reverse = True):
+            for key, value in sorted(self.weight.iteritems(), key=lambda (k, v): (v, k), reverse=True):
                 result.append(key)
             return result
         return None
