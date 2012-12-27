@@ -6,20 +6,20 @@ class CloudyWords(object):
         Default initializer, min_word_len is default minimal length of the word which will be added to the tree.
         """
         self.weight = dict()
-        self.minWordLength = min_word_len
-        self.illegalSymbols = {'.', ',', ';', '?', '<', '>', '[', ']', '(', ')', '{', '}', '`', '~', '!'}
+        self.min_word_length = min_word_len
+        self.illegal_symbols = {'.', ',', ';', '?', '<', '>', '[', ']', '(', ')', '{', '}', '`', '~', '!'}
 
     def add_words(self, word_or_sentence):
         """
         Method will populate engine with words.
         """
-        wLines = word_or_sentence.split(' ')
-        for line in wLines:
-            for isy in self.illegalSymbols:
+        w_lines = word_or_sentence.split(' ')
+        for line in w_lines:
+            for isy in self.illegal_symbols:
                 line = line.replace(isy, '')
             line = line.strip().lower()
 
-            if len(line) > self.minWordLength:
+            if len(line) > self.min_word_length:
                 if line in self.weight:
                     self.weight[line] += 1
                 else:
