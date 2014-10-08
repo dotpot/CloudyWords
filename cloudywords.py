@@ -1,11 +1,12 @@
-__author__ = 'lus'
+from collections import defaultdict
+
 
 class CloudyWords(object):
     def __init__(self, min_word_len=4):
         """
         Default initializer, min_word_len is default minimal length of the word which will be added to the tree.
         """
-        self.weight = dict()
+        self.weight = defaultdict(int)
         self.min_word_length = min_word_len
         self.illegal_symbols = {'.', ',', ';', '?', '<', '>', '[', ']', '(', ')', '{', '}', '`', '~', '!'}
 
@@ -14,16 +15,12 @@ class CloudyWords(object):
         Method will populate engine with words.
         """
         w_lines = word_or_sentence.split(' ')
-        for line in w_lines:
+        for line in map(str.lower, map(str.strip, w_lines)):
             for isy in self.illegal_symbols:
                 line = line.replace(isy, '')
-            line = line.strip().lower()
 
             if len(line) > self.min_word_length:
-                if line in self.weight:
-                    self.weight[line] += 1
-                else:
-                    self.weight[line] = 1
+                self.weight[line] += 1
 
     def cloud(self):
         """
@@ -37,8 +34,9 @@ class CloudyWords(object):
         return None
 
     def total_words_count(self):
+        """ Returns total words count. """
         return len(self.weight)
 
     def reset(self):
-        self.totalWordsCount = 0
+        """ Cleans up. """
         self.weight.clear()

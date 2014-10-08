@@ -3,7 +3,7 @@ word's/tag's cloud in Python for Humans.
 
 # Introduction
 even wondered what words are most popular in particular string/document, entries ?
-Now it's easy to know with **CloudyWords**.
+Now it's easy to find out with **CloudyWords**.
 
 #Usage
     from cloudywords import CloudyWords
@@ -11,9 +11,11 @@ Now it's easy to know with **CloudyWords**.
 
     # add phrase.
     cw.add_words("""
-    his is a fantastic phrase, it has been popular and it has worked; testing now starts earlier and testing has a higher profile than ever before, but despite all that, it isn't what we meant or even what we really needed.
-    Back in the depths of despair that was the Software Crisis. Testers managed to bellow a rallying cry "Testing should start early!" Testers could be found picketing management and development meetings with 'V-model' placards and T-shirts with 'cost of defect' bar charts emblazoned.
-    """)
+    his is a fantastic phrase, it has been popular and it has worked; testing now starts earlier and testing has a 
+    higher profile than ever before, but despite all that, it isn't what we meant or even what we really needed.
+    Back in the depths of despair that was the Software Crisis. Testers managed to bellow a rallying cry "Testing 
+    should start early!" Testers could be found picketing management and development meetings with 'V-model' 
+    placards and T-shirts with 'cost of defect' bar charts emblazoned.""")
 
     # add one word.
     cw.add_words('testing')
@@ -30,7 +32,7 @@ Now it's easy to know with **CloudyWords**.
     # if you wanna know weight:
     for word in res:
         # print word and it's weight.
-        print word + ' '+ str(cw.weight[word])
+        print '{} {}'.format(word, cw.weight[word])
 
 **Result:**
 
@@ -43,5 +45,3 @@ Now it's easy to know with **CloudyWords**.
     starts 1
 
 ### Please feel free to improve it if you like :)
-
-![image](http://img193.imageshack.us/img193/5605/tumblrlznr805hcb1r3zat8.png)
